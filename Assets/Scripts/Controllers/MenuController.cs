@@ -32,7 +32,7 @@ namespace UNOScoring.Controllers
 				else
 				{
 					_playersCount.HideErrorMessage();
-					_playerManager.InitializePlayers(_playersReservation, playersCount);
+					_playerManager.InitializePlayers(_playersReservation, _animationManager, playersCount);
 					_animationManager.ShiftPanelsToLeftSide();
 				}
 			}

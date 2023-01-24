@@ -2,23 +2,28 @@ using System.Collections.Generic;
 using UNOScoring.Controllers;
 using UNOScoring.PlayerLogic;
 using UNOScoring.Constants;
+using UNOScoring.Managers;
 using UnityEngine;
 using TMPro;
+using UNOScoring.Game;
 
 namespace UNOScoring.Managers
 {
 	public class PlayerManager : MonoBehaviour
 	{
+		[SerializeField] private GameSession _gameSession;
 		[SerializeField] private TMP_Text _playerNumber;
 
+		private AnimationManager _animationManager;
 		private List<Player> _playersList;
 		private Page _playersReservation;
 		private int _playersCount;
 
-		public void InitializePlayers(Page playersReservation, int playersCount)
+		public void InitializePlayers(Page playersReservation, AnimationManager animationManager, int playersCount)
 		{
 			_playersList = new List<Player>();
 
+			_animationManager = animationManager;
 			_playersReservation = playersReservation;
 			_playersCount = playersCount;
 
@@ -46,7 +51,7 @@ namespace UNOScoring.Managers
 
 			if (CheckOnLastPlayer())
 			{
-				//Тут будет переход в следующее меню
+				StartGameSession();
 				Debug.Log("The players list is full");
 			}
 			else
@@ -97,6 +102,15 @@ namespace UNOScoring.Managers
 			}
 
 			return false;
+		}
+
+		private void StartGameSession()
+		{
+			_animationManager.ShiftPanelsToLeftSide();
+			_playersReservation.HideErrorMessage();
+			_playersReservation.ClearPageInputField();
+
+			_gameSession.Initialize(_playersList);
 		}
 	}
 }
