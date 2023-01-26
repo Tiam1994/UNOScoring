@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 61085325}
   - component: {fileID: 61085326}
   m_Layer: 5
-  m_Name: PlayersReservation
+  m_Name: PlayersReservationPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 588393195}
   - component: {fileID: 588393196}
   m_Layer: 5
-  m_Name: PlayersCount
+  m_Name: StartPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1302,7 +1302,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1214123420}
         m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: BackToStartPanel
+        m_MethodName: ReturnToStartPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1793,7 +1793,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1572.5}
+  m_SizeDelta: {x: 0, y: 2220}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &996041276
 MonoBehaviour:
@@ -2041,10 +2041,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e4daa090b366041908b9e0e703e39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playersCount: {fileID: 588393196}
-  _playersReservation: {fileID: 61085326}
+  _startPage: {fileID: 588393196}
+  _playersRegestrationPage: {fileID: 61085326}
   _animationManager: {fileID: 529939835}
   _playerManager: {fileID: 1756715167}
+  _errorsChecker: {fileID: 2041742688}
 --- !u!1 &1261537342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,8 +2056,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1261537343}
   - component: {fileID: 1261537344}
+  - component: {fileID: 1261537345}
   m_Layer: 5
-  m_Name: Game
+  m_Name: GamePage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2097,6 +2099,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputField: {fileID: 0}
   _errorMessage: {fileID: 0}
+--- !u!114 &1261537345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261537342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645468e4c35d05f4e962be1580502b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerButtonPrefab: {fileID: 1087582589646998595, guid: a50c3e5bf74c4bb4db9fc8608444c8cf, type: 3}
+  _contentWindow: {fileID: 996041275}
 --- !u!1 &1264134788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,7 +2681,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1214123420}
         m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: NumberOfPlayersCheck
+        m_MethodName: NumberOfPlayersRegestration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3168,7 +3184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de453a728d42644faf0446e191d0cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameSession: {fileID: 1765555241}
+  _gameSession: {fileID: 1261537345}
+  _errorsChecker: {fileID: 2041742688}
   _playerNumber: {fileID: 1525725998}
 --- !u!4 &1756715168
 Transform:
@@ -3184,52 +3201,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1765555240
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1765555242}
-  - component: {fileID: 1765555241}
-  m_Layer: 0
-  m_Name: GameSession
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1765555241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765555240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645468e4c35d05f4e962be1580502b9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerInformationComponentPrefab: {fileID: 4247058057296052927, guid: a50c3e5bf74c4bb4db9fc8608444c8cf, type: 3}
-  _contentWindow: {fileID: 996041275}
---- !u!4 &1765555242
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765555240}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856149893
 GameObject:
@@ -3317,7 +3288,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1214123420}
         m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: CreatePlayer
+        m_MethodName: PlayersNameRegestration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3365,3 +3336,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856149893}
   m_CullTransparentMesh: 1
+--- !u!1 &2041742687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2041742689}
+  - component: {fileID: 2041742688}
+  m_Layer: 0
+  m_Name: ErrorsChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2041742688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041742687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab060542ef7fc0344b0d74c9769a0439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2041742689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041742687}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

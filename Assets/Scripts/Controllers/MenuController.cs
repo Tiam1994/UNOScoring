@@ -8,45 +8,47 @@ namespace UNOScoring.Controllers
 	public class MenuController : MonoBehaviour
 	{
 		[Header("Pages")]
-		[SerializeField] private Page _playersCount;
-		[SerializeField] private Page _playersReservation;
+		[SerializeField] private Page _startPage;
+		[SerializeField] private Page _playersRegestrationPage;
 
 		[Header("Managers")]
 		[SerializeField] private AnimationManager _animationManager;
 		[SerializeField] private PlayerManager _playerManager;
+		[SerializeField] private ErrorsChecker _errorsChecker;
 
-		public void NumberOfPlayersCheck()
+		public void NumberOfPlayersRegestration()
 		{
-			if (_playersCount.PageInputField.text == string.Empty)
+			if(_errorsChecker.CheckEmtyField(_startPage))
 			{
-				_playersCount.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_EMPTY_FIELD);
+				_startPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_EMPTY_FIELD);
 			}
 			else
 			{
-				int playersCount = int.Parse(_playersCount.PageInputField.text);
+				int playersCount = int.Parse(_startPage.PageInputField.text);
 
 				if (playersCount <= 1)
 				{
-					_playersCount.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_FEW_PLAYERS);
+					_startPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_FEW_PLAYERS);
 				}
 				else
 				{
-					_playersCount.HideErrorMessage();
-					_playerManager.InitializePlayers(_playersReservation, _animationManager, playersCount);
+					_startPage.HideErrorMessage();
+					_playerManager.InitializePlayers(_playersRegestrationPage, _animationManager, playersCount);
 					_animationManager.ShiftPanelsToLeftSide();
 				}
 			}
 		}
 
-		public void CreatePlayer()
+		public void PlayersNameRegestration()
 		{
-			_playerManager.AddPlayer(new Player(_playersReservation.PageInputField.text));
+			_playerManager.AddPlayer(new Player(_playersRegestrationPage.PageInputField.text));
 		}
 
-		public void BackToStartPanel()
+		//—делать метод универсальным, что бы можно было возвращатьс€ на стартовую панель с любой кнопки
+		public void ReturnToStartPanel()
 		{
-			_playersReservation.HideErrorMessage();
-			_playersReservation.ClearPageInputField();
+			_playersRegestrationPage.HideErrorMessage();
+			_playersRegestrationPage.ClearPageInputField();
 			_animationManager.ShiftPanelsToRightSide();
 		}
 	}
