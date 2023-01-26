@@ -111,6 +111,7 @@ namespace UNOScoring.Managers
 			_playersReservation.ClearPageInputField();
 
 			_gameSession.Initialize(_playersList);
+			_gameSession.StartGameSession();
 		}
 	}
 }

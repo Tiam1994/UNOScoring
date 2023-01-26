@@ -220,9 +220,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5953482794347899375}
-  - component: {fileID: 4247058057296052927}
+  - component: {fileID: 1087582589646998595}
   m_Layer: 5
-  m_Name: PlayerInformationComponent
+  m_Name: PlayerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,7 +251,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 980, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4247058057296052927
+--- !u!114 &1087582589646998595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5257232500278840954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d4f5100e7339d844869ddff123bd314, type: 3}
+  m_Script: {fileID: 11500000, guid: 252fba49c2f52ec409e8c910e94548a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _name: {fileID: 1350020975435172268}

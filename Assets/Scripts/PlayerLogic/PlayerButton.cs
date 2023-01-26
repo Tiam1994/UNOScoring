@@ -1,9 +1,9 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 namespace UNOScoring.PlayerLogic
 {
-	public class PlayerInformationConmponent : MonoBehaviour
+	public class PlayerButton : MonoBehaviour
 	{
 		[SerializeField] private TMP_Text _name;
 		[SerializeField] private TMP_Text _score;
