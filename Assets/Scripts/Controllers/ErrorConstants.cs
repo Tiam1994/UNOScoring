@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UNOScoring.Constants
+namespace UNOScoring.Controllers
 {
 	public class ErrorConstants : MonoBehaviour
 	{

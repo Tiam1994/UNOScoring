@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UNOScoring.Controllers;
 using UNOScoring.PlayerLogic;
-using UNOScoring.Constants;
 using UNOScoring.Game;
 using UnityEngine;
 using TMPro;
@@ -73,7 +72,7 @@ namespace UNOScoring.Managers
 			_playersRegestrationPage.HideErrorMessage();
 			_playersRegestrationPage.ClearPageInputField();
 
-			_gameSession.Initialize(_playersList);
+			_gameSession.Initialize(_playersList, _animationManager);
 
 			_gameSession.StartGameSession();
 		}

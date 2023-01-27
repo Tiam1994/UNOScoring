@@ -1,6 +1,6 @@
 using UNOScoring.PlayerLogic;
-using UNOScoring.Constants;
 using UNOScoring.Managers;
+using UNOScoring.Game;
 using UnityEngine;
 
 namespace UNOScoring.Controllers
@@ -13,6 +13,7 @@ namespace UNOScoring.Controllers
 
 		[Header("Managers")]
 		[SerializeField] private AnimationManager _animationManager;
+		[SerializeField] private GameSession _gameSession;
 		[SerializeField] private PlayerManager _playerManager;
 		[SerializeField] private ErrorsChecker _errorsChecker;
 
@@ -44,11 +45,21 @@ namespace UNOScoring.Controllers
 			_playerManager.AddPlayer(new Player(_playersRegestrationPage.PageInputField.text));
 		}
 
-		//—делать метод универсальным, что бы можно было возвращатьс€ на стартовую панель с любой кнопки
 		public void ReturnToStartPanel()
 		{
 			_playersRegestrationPage.HideErrorMessage();
 			_playersRegestrationPage.ClearPageInputField();
+			_animationManager.ShiftPanelsToRightSide();
+		}
+
+		public void AddScore()
+		{
+			_gameSession.AddScore();
+			_animationManager.ShiftPanelsToRightSide();
+		}
+
+		public void ReturnToPlayersList()
+		{
 			_animationManager.ShiftPanelsToRightSide();
 		}
 	}
