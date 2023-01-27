@@ -3,6 +3,7 @@ using UNOScoring.Controllers;
 using UNOScoring.PlayerLogic;
 using UNOScoring.Managers;
 using UnityEngine;
+using Zenject;
 
 namespace UNOScoring.Game
 {
@@ -11,15 +12,14 @@ namespace UNOScoring.Game
 		[SerializeField] private Page _gamePage;
 		[SerializeField] private PlayerButton _playerButtonPrefab;
 		[SerializeField] private Transform _contentWindow;
+		[Inject] private AnimationManager _animationManager;
 
-		private AnimationManager _animationManager;
 		private List<Player> _players;
 		private List<PlayerButton> _playerButtons = new List<PlayerButton>();
 
-		public void Initialize(List<Player> players, AnimationManager animationManager)
+		public void Initialize(List<Player> players)
 		{
 			_players = players;
-			_animationManager = animationManager;
 		}
 
 		public void StartGameSession()

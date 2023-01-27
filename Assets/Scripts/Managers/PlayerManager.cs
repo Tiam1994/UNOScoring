@@ -3,6 +3,7 @@ using UNOScoring.Controllers;
 using UNOScoring.PlayerLogic;
 using UNOScoring.Game;
 using UnityEngine;
+using Zenject;
 using TMPro;
 
 namespace UNOScoring.Managers
@@ -12,17 +13,16 @@ namespace UNOScoring.Managers
 		[SerializeField] private GameSession _gameSession;
 		[SerializeField] private ErrorsChecker _errorsChecker;
 		[SerializeField] private TMP_Text _playerNumber;
+		[Inject] private AnimationManager _animationManager;
 
-		private AnimationManager _animationManager;
 		private List<Player> _playersList;
 		private Page _playersRegestrationPage;
 		private int _playersCount;
 
-		public void InitializePlayers(Page playersRegestrationPage, AnimationManager animationManager, int playersCount)
+		public void InitializePlayers(Page playersRegestrationPage, int playersCount)
 		{
 			_playersList = new List<Player>();
 
-			_animationManager = animationManager;
 			_playersRegestrationPage = playersRegestrationPage;
 			_playersCount = playersCount;
 
@@ -72,7 +72,7 @@ namespace UNOScoring.Managers
 			_playersRegestrationPage.HideErrorMessage();
 			_playersRegestrationPage.ClearPageInputField();
 
-			_gameSession.Initialize(_playersList, _animationManager);
+			_gameSession.Initialize(_playersList);
 
 			_gameSession.StartGameSession();
 		}

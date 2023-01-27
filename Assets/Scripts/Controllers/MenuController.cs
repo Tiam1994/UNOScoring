@@ -2,6 +2,7 @@ using UNOScoring.PlayerLogic;
 using UNOScoring.Managers;
 using UNOScoring.Game;
 using UnityEngine;
+using Zenject;
 
 namespace UNOScoring.Controllers
 {
@@ -12,10 +13,11 @@ namespace UNOScoring.Controllers
 		[SerializeField] private Page _playersRegestrationPage;
 
 		[Header("Managers")]
-		[SerializeField] private AnimationManager _animationManager;
 		[SerializeField] private GameSession _gameSession;
 		[SerializeField] private PlayerManager _playerManager;
 		[SerializeField] private ErrorsChecker _errorsChecker;
+
+		[Inject] private AnimationManager _animationManager;
 
 		public void NumberOfPlayersRegestration()
 		{
@@ -34,7 +36,7 @@ namespace UNOScoring.Controllers
 				else
 				{
 					_startPage.HideErrorMessage();
-					_playerManager.InitializePlayers(_playersRegestrationPage, _animationManager, playersCount);
+					_playerManager.InitializePlayers(_playersRegestrationPage, playersCount);
 					_animationManager.ShiftPanelsToLeftSide();
 				}
 			}
