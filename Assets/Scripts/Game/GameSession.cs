@@ -41,11 +41,9 @@ namespace UNOScoring.Game
 
 		public void AddScore()
 		{
-			PlayerButton activePlayerButton = new PlayerButton();
+			PlayerButton activePlayerButton = GetActivePlayerButton();
 
-			activePlayerButton = GetActivePlayerButton();
-
-			activePlayerButton.Player.Score = int.Parse(_gamePage.PageInputField.text);
+			activePlayerButton.Player.Score += int.Parse(_gamePage.PageInputField.text);
 			activePlayerButton.SwitchIsActive();
 			activePlayerButton.ComleteValues();
 

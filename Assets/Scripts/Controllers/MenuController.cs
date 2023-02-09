@@ -11,6 +11,7 @@ namespace UNOScoring.Controllers
 		[Header("Pages")]
 		[SerializeField] private Page _startPage;
 		[SerializeField] private Page _playersRegestrationPage;
+		[SerializeField] private Page _gamePage;
 
 		[Header("Managers")]
 		[SerializeField] private GameSession _gameSession;
@@ -56,13 +57,25 @@ namespace UNOScoring.Controllers
 
 		public void AddScore()
 		{
+			_gamePage.HideErrorMessage();
+
+			if (_errorsChecker.CheckEmtyField(_gamePage))
+			{
+				_gamePage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_EMPTY_FIELD);
+				_gamePage.ClearPageInputField();
+				return;
+			}
+
 			_gameSession.AddScore();
 			_animationManager.ShiftPanelsToRightSide();
+			_gamePage.ClearPageInputField();
 		}
 
 		public void ReturnToPlayersList()
 		{
 			_animationManager.ShiftPanelsToRightSide();
+			_gamePage.HideErrorMessage();
+			_gamePage.ClearPageInputField();
 		}
 	}
 }

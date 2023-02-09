@@ -3243,6 +3243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPage: {fileID: 588393196}
   _playersRegestrationPage: {fileID: 61085326}
+  _gamePage: {fileID: 1261537344}
   _gameSession: {fileID: 1261537345}
   _playerManager: {fileID: 1756715167}
   _errorsChecker: {fileID: 2041742688}
@@ -3759,8 +3760,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 534, y: -831}
-  m_SizeDelta: {x: 1068, y: 1662}
+  m_AnchoredPosition: {x: 534, y: -1156.3}
+  m_SizeDelta: {x: 1068, y: 2312.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1396627216
 MonoBehaviour:
