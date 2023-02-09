@@ -1,17 +1,17 @@
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
+using DG.Tweening;
 
-namespace UNOScoring.Managers
+namespace UNOScoring.Controllers
 {
-	public class AnimationManager : MonoBehaviour
+	public class AnimationController : MonoBehaviour
 	{
 		[SerializeField] private List<GameObject> _pages;
 
-		private const float PANEL_SHIFT = 1068f;
 		private const float ANIMATION_DURATION = 0.8f;
+		private const float PANEL_SHIFT = 1068f;
 
-		public void ShiftPanelsToLeftSide()
+		public void TurnToNextPage()
 		{
 			foreach (GameObject page in _pages)
 			{
@@ -19,12 +19,13 @@ namespace UNOScoring.Managers
 			}
 		}
 
-		public void ShiftPanelsToRightSide()
+		public void TurnToBackPage()
 		{
 			foreach (GameObject page in _pages)
 			{
 				page.transform.DOLocalMoveX(page.transform.localPosition.x + PANEL_SHIFT, ANIMATION_DURATION);
 			}
 		}
+
 	}
 }

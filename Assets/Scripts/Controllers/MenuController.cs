@@ -1,6 +1,4 @@
-using UNOScoring.PlayerLogic;
-using UNOScoring.Managers;
-using UNOScoring.Game;
+using UNOScoring.Constants;
 using UnityEngine;
 using Zenject;
 
@@ -9,73 +7,51 @@ namespace UNOScoring.Controllers
 	public class MenuController : MonoBehaviour
 	{
 		[Header("Pages")]
-		[SerializeField] private Page _startPage;
-		[SerializeField] private Page _playersRegestrationPage;
-		[SerializeField] private Page _gamePage;
+		[SerializeField] private Page _countOfPlayerPage;
+		[SerializeField] private Page _countOfScorePage;
 
-		[Header("Managers")]
-		[SerializeField] private GameSession _gameSession;
-		[SerializeField] private PlayerManager _playerManager;
-		[SerializeField] private ErrorsChecker _errorsChecker;
+		[Inject] private AnimationController _animationController;
 
-		[Inject] private AnimationManager _animationManager;
-
-		public void NumberOfPlayersRegestration()
+		public void RegestrationCountOfPlayers()
 		{
-			if(_errorsChecker.CheckEmtyField(_startPage))
+			if (ErrorsController.CheckEmtyField(_countOfPlayerPage))
 			{
-				_startPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_EMPTY_FIELD);
+				_countOfPlayerPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_INCORRECT_VALUE);
+			}
+			else if (ErrorsController.CheckCorrectValue(_countOfPlayerPage.GetInputField))
+			{
+				_countOfPlayerPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_EMPTY_FIELD);
+			}
+			else if (ErrorsController.CheckMinimumValue(_countOfPlayerPage.GetInputField, 1))
+			{
+				_countOfPlayerPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_FEW_PLAYERS);
 			}
 			else
 			{
-				int playersCount = int.Parse(_startPage.PageInputField.text);
-
-				if (playersCount <= 1)
-				{
-					_startPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_FEW_PLAYERS);
-				}
-				else
-				{
-					_startPage.HideErrorMessage();
-					_playerManager.InitializePlayers(_playersRegestrationPage, playersCount);
-					_animationManager.ShiftPanelsToLeftSide();
-				}
+				_countOfPlayerPage.HideErrorMessage();
+				_animationController.TurnToNextPage();
 			}
 		}
 
-		public void PlayersNameRegestration()
+		public void RegestrationCountOfScore()
 		{
-			_playerManager.AddPlayer(new Player(_playersRegestrationPage.PageInputField.text));
-		}
-
-		public void ReturnToStartPanel()
-		{
-			_playersRegestrationPage.HideErrorMessage();
-			_playersRegestrationPage.ClearPageInputField();
-			_animationManager.ShiftPanelsToRightSide();
-		}
-
-		public void AddScore()
-		{
-			_gamePage.HideErrorMessage();
-
-			if (_errorsChecker.CheckEmtyField(_gamePage))
+			if(ErrorsController.CheckEmtyField(_countOfScorePage))
 			{
-				_gamePage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_EMPTY_FIELD);
-				_gamePage.ClearPageInputField();
-				return;
+				_countOfScorePage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_INCORRECT_VALUE);
 			}
-
-			_gameSession.AddScore();
-			_animationManager.ShiftPanelsToRightSide();
-			_gamePage.ClearPageInputField();
-		}
-
-		public void ReturnToPlayersList()
-		{
-			_animationManager.ShiftPanelsToRightSide();
-			_gamePage.HideErrorMessage();
-			_gamePage.ClearPageInputField();
+			else if (ErrorsController.CheckCorrectValue(_countOfScorePage.GetInputField))
+			{
+				_countOfScorePage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_EMPTY_FIELD);
+			}
+			else if (ErrorsController.CheckMinimumValue(_countOfScorePage.GetInputField, 100))
+			{
+				_countOfScorePage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_FEW_SCORE);
+			}
+			else
+			{
+				_countOfScorePage.HideErrorMessage();
+				_animationController.TurnToNextPage();
+			}
 		}
 	}
 }
