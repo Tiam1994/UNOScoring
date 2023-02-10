@@ -1375,6 +1375,7 @@ RectTransform:
   - {fileID: 974230633}
   - {fileID: 61085325}
   - {fileID: 1261537343}
+  - {fileID: 782474888}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1427,6 +1428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b84f6322674494ba9079319e177a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _keylockPanel: {fileID: 782474887}
   _pages:
   - {fileID: 588393194}
   - {fileID: 974230632}
@@ -2359,10 +2361,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1124645041}
         m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
         m_MethodName: ReturnToBack
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 61085326}
+          m_ObjectArgumentAssemblyTypeName: UNOScoring.Controllers.Page, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2565,7 +2567,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 656917995}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1124645041}
+        m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
+        m_MethodName: AddScoreToPlayerButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &656917995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2811,6 +2825,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &782474887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 782474888}
+  - component: {fileID: 782474890}
+  - component: {fileID: 782474889}
+  m_Layer: 5
+  m_Name: Keylock Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &782474888
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782474887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 341742837}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &782474889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782474887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &782474890
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782474887}
+  m_CullTransparentMesh: 1
 --- !u!1 &824067718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,11 +3451,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1124645041}
         m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: ReturnToBack
-        m_Mode: 1
+        m_MethodName: ReturnToBackAndSwitchActiveButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1261537344}
+          m_ObjectArgumentAssemblyTypeName: UNOScoring.Controllers.Page, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3665,6 +3755,7 @@ MonoBehaviour:
   _countOfPlayerPage: {fileID: 588393196}
   _countOfScorePage: {fileID: 974230634}
   _nameOfPlayerPage: {fileID: 61085326}
+  _gameplayPage: {fileID: 1261537344}
 --- !u!1 &1180412690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3944,6 +4035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1261537343}
+  - component: {fileID: 1261537344}
   m_Layer: 5
   m_Name: Gameplay Page
   m_TagString: Untagged
@@ -3976,6 +4068,20 @@ RectTransform:
   m_AnchoredPosition: {x: 3738, y: -0.010893}
   m_SizeDelta: {x: 2136, y: 2312.5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1261537344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261537342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78dca9091f47c7742a43b8dbec35d49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputField: {fileID: 398102633}
+  _errorMessage: {fileID: 281732420}
 --- !u!1 &1264134788
 GameObject:
   m_ObjectHideFlags: 0
@@ -5900,10 +6006,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1124645041}
         m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
         m_MethodName: ReturnToBack
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 974230634}
+          m_ObjectArgumentAssemblyTypeName: UNOScoring.Controllers.Page, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

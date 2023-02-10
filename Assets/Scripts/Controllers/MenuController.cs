@@ -11,9 +11,12 @@ namespace UNOScoring.Controllers
 		[SerializeField] private Page _countOfPlayerPage;
 		[SerializeField] private Page _countOfScorePage;
 		[SerializeField] private Page _nameOfPlayerPage;
+		[SerializeField] private Page _gameplayPage;
 
 		[Inject] private AnimationController _animationController;
 		[Inject] private PlayersManager _playersManager;
+
+		private PlayerButton _playerButton;
 
 		public void RegestrationCountOfPlayers()
 		{
@@ -82,7 +85,7 @@ namespace UNOScoring.Controllers
 
 					_animationController.TurnToNextPage();
 
-					_playersManager.ShowPlayerList();
+					_playersManager.CreatePlayerButtonsList();
 
 					return;
 				}
@@ -96,9 +99,46 @@ namespace UNOScoring.Controllers
 			}
 		}
 
-		public void ReturnToBack()
+		public void AddScoreToPlayerButton()
 		{
+			_playerButton = _playersManager.GetCurrentPlayerButton();
+
+			if (ErrorsController.CheckEmtyField(_gameplayPage))
+			{
+				_gameplayPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_EMPTY_FIELD);
+			}
+			else if (ErrorsController.CheckCorrectValue(_gameplayPage.GetInputField))
+			{
+				_gameplayPage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_INCORRECT_VALUE);
+			}
+			else
+			{
+				_playerButton.ShowCountOfScoreToBeAdded(_gameplayPage.GetInputField.text);
+				_playerButton.IsActiveSwitcher();
+
+				_gameplayPage.ClearInputField();
+				_gameplayPage.HideErrorMessage();
+
+				_animationController.TurnToBackPage();
+			}
+		}
+
+		public void ReturnToBack(Page page)
+		{
+			page.ClearInputField();
+			page.HideErrorMessage();
 			_animationController.TurnToBackPage();
+		}
+
+		public void ReturnToBackAndSwitchActiveButton(Page page)
+		{
+			ReturnToBack(page);
+
+			if(_playerButton == null)
+			{
+				_playerButton = _playersManager.GetCurrentPlayerButton();
+			}
+			_playerButton.IsActiveSwitcher();
 		}
 	}
 }

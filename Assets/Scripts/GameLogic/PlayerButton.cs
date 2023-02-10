@@ -13,7 +13,10 @@ namespace UNOScoring.GameLogic
 		[SerializeField] private TMP_Text _name;
 		[SerializeField] private TMP_Text _score;
 
+		private bool _isActive;
 		private Player _player;
+
+		public bool IsActive { get { return _isActive; } }
 
 		public void Initialize(Player player)
 		{
@@ -27,9 +30,27 @@ namespace UNOScoring.GameLogic
 			_score.text = _player.Score.ToString();
 		}
 
-		public void MoveToEnteringScore()
+		public void ShowCountOfScoreToBeAdded(string scoreText)
+		{
+			_score.text = $"{_player.Score} + {scoreText}";
+		}
+
+		public void IsActiveSwitcher()
+		{
+			if (!_isActive)
+			{
+				_isActive = true;
+			}
+			else
+			{
+				_isActive = false;
+			}
+		}
+
+		public void ActivateButton()
 		{
 			_animationController.TurnToNextPage();
+			IsActiveSwitcher();
 		}
 	}
 }

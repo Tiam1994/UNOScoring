@@ -375,7 +375,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8366931920858983573}
         m_TargetAssemblyTypeName: UNOScoring.GameLogic.PlayerButton, Assembly-CSharp
-        m_MethodName: MoveToEnteringScore
+        m_MethodName: ActivateButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
