@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
+using UNOScoring.GameLogic;
 using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace UNOScoring.Controllers
 {
@@ -44,6 +42,19 @@ namespace UNOScoring.Controllers
 			{
 				return false;
 			}
+		}
+
+		public static bool CheckSameName(string name, List<Player> playersList)
+		{
+			foreach (Player player in playersList)
+			{
+				if (player.Name == name)
+				{
+					return true;
+				}
+			}
+
+			return false;
 		}
 	}
 }
