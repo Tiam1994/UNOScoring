@@ -1,3 +1,4 @@
+using UNOScoring.Controllers;
 using UnityEngine;
 using Zenject;
 using TMPro;
@@ -7,6 +8,7 @@ namespace UNOScoring.GameLogic
 	public class PlayerButton : MonoBehaviour
 	{
 		public class Factory : PlaceholderFactory<PlayerButton> { }
+		[Inject] private AnimationController _animationController;
 
 		[SerializeField] private TMP_Text _name;
 		[SerializeField] private TMP_Text _score;
@@ -23,6 +25,11 @@ namespace UNOScoring.GameLogic
 		{
 			_name.text = _player.Name;
 			_score.text = _player.Score.ToString();
+		}
+
+		public void MoveToEnteringScore()
+		{
+			_animationController.TurnToNextPage();
 		}
 	}
 }
