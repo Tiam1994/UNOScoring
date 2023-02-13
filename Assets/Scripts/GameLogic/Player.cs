@@ -15,5 +15,10 @@ namespace UNOScoring.GameLogic
 			_name = name;
 			_score = 0;
 		}
+
+		public void SetScores(int score)
+		{
+			_score += score;
+		}
 	}
 }

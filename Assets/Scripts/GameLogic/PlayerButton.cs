@@ -13,10 +13,13 @@ namespace UNOScoring.GameLogic
 		[SerializeField] private TMP_Text _name;
 		[SerializeField] private TMP_Text _score;
 
+		private int _addedScores;
 		private bool _isActive;
 		private Player _player;
 
 		public bool IsActive { get { return _isActive; } }
+
+		public Player GetPlayer { get { return _player; } }
 
 		public void Initialize(Player player)
 		{
@@ -33,6 +36,13 @@ namespace UNOScoring.GameLogic
 		public void ShowCountOfScoreToBeAdded(string scoreText)
 		{
 			_score.text = $"{_player.Score} + {scoreText}";
+			_addedScores = int.Parse(scoreText);
+		}
+
+		public void AddScoreToPlayer()
+		{
+			_player.SetScores(_addedScores);
+			_addedScores = 0;
 		}
 
 		public void IsActiveSwitcher()

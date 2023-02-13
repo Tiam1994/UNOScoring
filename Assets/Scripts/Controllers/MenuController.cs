@@ -123,6 +123,11 @@ namespace UNOScoring.Controllers
 			}
 		}
 
+		public void AddScore()
+		{
+			_playersManager.AddScoresToPlayers();
+		}
+
 		public void ReturnToBack(Page page)
 		{
 			page.ClearInputField();

@@ -25,6 +25,16 @@ namespace UNOScoring.GameLogic
 			_playersOfCount = int.Parse(playersOfCount);
 		}
 
+		private void UpdatePlayerList()
+		{
+			_playersList = new List<Player>();
+
+			foreach (PlayerButton playerButton in _playerButtonsList)
+			{
+				_playersList.Add(playerButton.GetPlayer);
+			}
+		}
+
 		public void CreatePlayerButtonsList()
 		{
 			_playerButtonsList = new List<PlayerButton>();
@@ -44,6 +54,17 @@ namespace UNOScoring.GameLogic
 			Player player = new Player();
 			player.InitializePlayer(nameOfPlayer);
 			_playersList.Add(player);
+		}
+
+		public void AddScoresToPlayers()
+		{
+			foreach (PlayerButton playerButton in _playerButtonsList)
+			{
+				playerButton.AddScoreToPlayer();
+				playerButton.ShowPlayerData();
+			}
+
+			UpdatePlayerList();
 		}
 
 		public void ShowActivePlayerNumber()
