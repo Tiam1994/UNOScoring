@@ -51,7 +51,7 @@ namespace UNOScoring.Controllers
 			{
 				_countOfScorePage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_INCORRECT_VALUE);
 			}
-			else if (ErrorsController.CheckMinimumValue(_countOfScorePage.GetInputField, 100))
+			else if (ErrorsController.CheckMinimumValue(_countOfScorePage.GetInputField, 99))
 			{
 				_countOfScorePage.ShowErrorMessage(ErrorConstants.ERROR_CAUSE_FEW_SCORE);
 			}
