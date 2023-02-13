@@ -17,6 +17,7 @@ namespace UNOScoring.GameLogic
 		private int _playersOfCount;
 
 		public List<Player> PlayersList { get { return _playersList; } }
+		public List<PlayerButton> PlayerButtonsList { get { return _playerButtonsList; } }
 		public int PlayersOfCount { get { return _playersOfCount; } }
 
 		public void CreatePlayersList(string playersOfCount)

@@ -11,7 +11,7 @@ namespace UNOScoring.Controllers
 		[SerializeField] private Page _countOfPlayerPage;
 		[SerializeField] private Page _countOfScorePage;
 		[SerializeField] private Page _nameOfPlayerPage;
-		[SerializeField] private Page _gameplayPage;
+		[SerializeField] private GameplayPage _gameplayPage;
 
 		[Inject] private AnimationController _animationController;
 		[Inject] private PlayersManager _playersManager;
@@ -125,7 +125,16 @@ namespace UNOScoring.Controllers
 
 		public void AddScore()
 		{
-			_playersManager.AddScoresToPlayers();
+			_gameplayPage.HideErrorMessageForAddScores();
+
+			if (ErrorsController.CheckForWinnerOfRound(_playersManager.PlayerButtonsList))
+			{
+				_gameplayPage.ShowErrorMessageForAddScores(ErrorConstants.ERROR_CAUSE_NO_WINNER);
+			}
+			else
+			{
+				_playersManager.AddScoresToPlayers();
+			}
 		}
 
 		public void ReturnToBack(Page page)

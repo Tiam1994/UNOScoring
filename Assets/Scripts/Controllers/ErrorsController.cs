@@ -56,5 +56,18 @@ namespace UNOScoring.Controllers
 
 			return false;
 		}
+
+		public static bool CheckForWinnerOfRound(List<PlayerButton> playerButtonsList)
+		{
+			foreach(PlayerButton playerButton in playerButtonsList)
+			{
+				if(playerButton.GetAddedScores == 0)
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
 	}
 }

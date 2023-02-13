@@ -19,6 +19,8 @@ namespace UNOScoring.GameLogic
 
 		public bool IsActive { get { return _isActive; } }
 
+		public int GetAddedScores { get { return _addedScores; } }
+
 		public Player GetPlayer { get { return _player; } }
 
 		public void Initialize(Player player)
