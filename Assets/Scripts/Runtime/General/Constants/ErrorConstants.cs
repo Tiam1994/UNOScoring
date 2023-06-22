@@ -1,4 +1,4 @@
-namespace UNOScoring.Constants
+namespace Runtime.General.Constants
 {
 	public class ErrorConstants
 	{

@@ -3,7 +3,7 @@ using TMPro;
 
 namespace UNOScoring.Controllers
 {
-	public class GameplayPage : Page
+	public class GameplayPage //: Page
 	{
 		[SerializeField] private TMP_Text _errorMessageForAddScores;
 
