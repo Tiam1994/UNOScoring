@@ -13,6 +13,7 @@ namespace Runtime.Pages
 		[SerializeField] private NumberOfScorePage _numberOfScorePage;
 		[SerializeField] private NameOfPlayerPage _nameOfPlayerPage;
 		[SerializeField] private GameplayPage _gameplayPage;
+		[SerializeField] private GameOverPage _gameOverPage;
 
 		[Inject] private PlayerButtonsController _playerButtonsController;
 		[Inject] private AnimationController _animationController;
@@ -24,6 +25,7 @@ namespace Runtime.Pages
 			_nameOfPlayerPage.OnRegestrationPlayer += RegistrationPlayer;
 			_gameplayPage.OnRegistrationScoreCount += RegistrationScoreCount;
 			_gameplayPage.OnFinishRoundButtonSelected += FinishRound;
+			_playerButtonsController.OnGamaFinished += GameOver;
 		}
 
 		private void OnDisable()
@@ -33,6 +35,7 @@ namespace Runtime.Pages
 			_nameOfPlayerPage.OnRegestrationPlayer -= RegistrationPlayer;
 			_gameplayPage.OnRegistrationScoreCount -= RegistrationScoreCount;
 			_gameplayPage.OnFinishRoundButtonSelected -= FinishRound;
+			_playerButtonsController.OnGamaFinished -= GameOver;
 		}
 
 		private void RegistrationNumberOfPlayer(int numberOfPlayers)
@@ -76,12 +79,20 @@ namespace Runtime.Pages
 		private void FinishRound()
 		{
 			_playerButtonsController.AddScoreToPlayerButtonList();
+			_playerButtonsController.PresenceWinnerOfGameCheck(GameInfo.Instance.NumberOfScore);
 		}
 
 		public void ReturnPreviousPage(Page page)
 		{
 			page.ClearPage();
 			_animationController.TurnToBackPage();
+		}
+
+		private void GameOver(string loseName, int score)
+		{
+			_animationController.ShowGameOverPanel();
+			_gameOverPage.Name = loseName;
+			_gameOverPage.Score = score.ToString();
 		}
 	}
 }

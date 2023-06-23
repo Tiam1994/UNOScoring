@@ -17,6 +17,8 @@ namespace Runtime.Gameplay
 		private int _addedScores;
 		private int _score;
 
+		public string Name { get { return _nameText.text; } }
+		public int Score { get { return _score; } }
 		public int AddedScores { get { return _addedScores; } }
 		public bool IsButtonActivate { get; set; }
 

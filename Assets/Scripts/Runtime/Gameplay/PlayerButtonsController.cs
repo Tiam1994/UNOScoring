@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Runtime.General;
 using UnityEngine;
 using Zenject;
+using System;
 
 namespace Runtime.Gameplay
 {
@@ -12,6 +13,8 @@ namespace Runtime.Gameplay
 		[Inject] private PlayerButton.Factory _playerButtonFactory;
 
 		private List<PlayerButton> _playerButtonsList;
+
+		public event Action<string, int> OnGamaFinished;
 
 		public void CreatePlayerButtonsList()
 		{
@@ -59,6 +62,26 @@ namespace Runtime.Gameplay
 			}
 
 			return true;
+		}
+
+		public void PresenceWinnerOfGameCheck(int maximumScore)
+		{
+			string loserName = string.Empty;
+			int highestScore = 0;
+
+			foreach (PlayerButton playerButton in _playerButtonsList)
+			{
+				if(playerButton.Score > highestScore)
+				{
+					loserName = playerButton.Name;
+					highestScore = playerButton.Score;
+				}
+			}
+
+			if(highestScore >= maximumScore)
+			{
+				OnGamaFinished?.Invoke(loserName, highestScore);
+			}
 		}
 	}
 }

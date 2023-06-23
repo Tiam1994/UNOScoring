@@ -8,6 +8,7 @@ namespace Runtime.Animations
 {
 	public class AnimationController : MonoBehaviour
 	{
+		[SerializeField] private Transform _gameOverPanel;
 		[SerializeField] private GameObject _touchLockPanel;
 		[SerializeField] private List<Page> _pages;
 
@@ -32,6 +33,14 @@ namespace Runtime.Animations
 			{
 				page.transform.DOLocalMoveX(page.transform.localPosition.x + PANEL_SHIFT, ANIMATION_DURATION);
 			}
+		}
+
+		public void ShowGameOverPanel()
+		{
+			TouchLockPanelActivate();
+			_gameOverPanel.gameObject.SetActive(true);
+
+			_gameOverPanel.DOLocalMoveY(0, ANIMATION_DURATION);
 		}
 
 		private async void TouchLockPanelActivate()
