@@ -1,9 +1,8 @@
 using Runtime.General.Constants;
 using Runtime.Utilities;
 using UnityEngine;
-using TMPro;
-using Runtime.General;
 using System;
+using TMPro;
 
 namespace Runtime.Pages
 {
@@ -30,12 +29,10 @@ namespace Runtime.Pages
 			}
 			else
 			{
+				OnRegestrationPlayer?.Invoke();
+
 				HideErrorMessage();
 				ClearInputField();
-
-				Debug.Log(InputFieldText);
-
-				OnRegestrationPlayer?.Invoke();
 			}
 		}
 

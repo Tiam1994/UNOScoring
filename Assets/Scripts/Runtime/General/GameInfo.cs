@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using Patterns;
-using UnityEngine;
 
 namespace Runtime.General
 {
 	public class GameInfo : DOLSingleton<GameInfo>
 	{
-		[SerializeField] private List<Player> _players;
+		private List<Player> _players;
 		private int _numberOfPlayer;
 		private int _numberOfScore;
 

@@ -732,9 +732,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1124645041}
-        m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: AddScore
+      - m_Target: {fileID: 1261537344}
+        m_TargetAssemblyTypeName: Runtime.Pages.GameplayPage, Assembly-CSharp
+        m_MethodName: FinishRound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -814,6 +814,8 @@ RectTransform:
   - {fileID: 588393195}
   - {fileID: 974230633}
   - {fileID: 61085325}
+  - {fileID: 1261537343}
+  - {fileID: 782474888}
   m_Father: {fileID: 341742837}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -834,9 +836,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99be8c50760350489de376f00ccf81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfPlayer: {fileID: 588393196}
-  _numberOfScore: {fileID: 974230634}
-  _nameOfPlayer: {fileID: 61085326}
+  _numberOfPlayerPage: {fileID: 588393196}
+  _numberOfScorePage: {fileID: 974230634}
+  _nameOfPlayerPage: {fileID: 61085326}
+  _gameplayPage: {fileID: 1261537344}
 --- !u!1 &230428855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,8 +1565,6 @@ RectTransform:
   m_Children:
   - {fileID: 824067719}
   - {fileID: 151707141}
-  - {fileID: 1261537343}
-  - {fileID: 782474888}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1583,7 +1584,7 @@ GameObject:
   - component: {fileID: 346988682}
   - component: {fileID: 346988683}
   m_Layer: 0
-  m_Name: Animation
+  m_Name: '[Animation Controller]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1596,13 +1597,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346988681}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 756578942}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &346988683
 MonoBehaviour:
@@ -1621,6 +1622,7 @@ MonoBehaviour:
   - {fileID: 588393196}
   - {fileID: 974230634}
   - {fileID: 61085326}
+  - {fileID: 1261537344}
 --- !u!1 &392882339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,6 +1668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationController: {fileID: 346988683}
+  _playerButtonPrefab: {fileID: 8366931920858983573, guid: a50c3e5bf74c4bb4db9fc8608444c8cf, type: 3}
+  _playerButtonsController: {fileID: 1261537345}
 --- !u!1 &398102631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,13 +2547,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1124645041}
-        m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: ReturnToBack
+      - m_Target: {fileID: 151707142}
+        m_TargetAssemblyTypeName: Runtime.Pages.PagesController, Assembly-CSharp
+        m_MethodName: ReturnPreviousPage
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UNOScoring.Controllers.Page, Assembly-CSharp
+          m_ObjectArgument: {fileID: 61085326}
+          m_ObjectArgumentAssemblyTypeName: Runtime.Pages.Page, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2753,9 +2757,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1124645041}
-        m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: AddScoreToPlayerButton
+      - m_Target: {fileID: 1261537344}
+        m_TargetAssemblyTypeName: Runtime.Pages.GameplayPage, Assembly-CSharp
+        m_MethodName: AddScoresToCurrentActivePlayerButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2856,39 +2860,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
---- !u!1 &756578941
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 756578942}
-  m_Layer: 0
-  m_Name: '[Controllers]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &756578942
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756578941}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 346988682}
-  - {fileID: 1124645040}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &761032123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,7 +2979,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &782474887
 GameObject:
@@ -3035,18 +3006,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782474887}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 341742837}
-  m_RootOrder: 3
+  m_Father: {fileID: 151707141}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 967.95483, y: 2212.4783}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782474889
 MonoBehaviour:
@@ -3204,7 +3175,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &930545257
 GameObject:
@@ -3724,13 +3695,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1124645041}
-        m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: ReturnToBackAndSwitchActiveButton
+      - m_Target: {fileID: 151707142}
+        m_TargetAssemblyTypeName: Runtime.Pages.PagesController, Assembly-CSharp
+        m_MethodName: ReturnPreviousPage
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UNOScoring.Controllers.Page, Assembly-CSharp
+          m_ObjectArgument: {fileID: 1261537344}
+          m_ObjectArgumentAssemblyTypeName: Runtime.Pages.Page, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3805,7 +3776,7 @@ Transform:
   - {fileID: 1588588542}
   - {fileID: 392882340}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123593117
 GameObject:
@@ -3983,50 +3954,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123593117}
   m_CullTransparentMesh: 1
---- !u!1 &1124645039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1124645040}
-  - component: {fileID: 1124645041}
-  m_Layer: 0
-  m_Name: Menu
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1124645040
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124645039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 756578942}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1124645041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124645039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e4daa090b366041908b9e0e703e39b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1180412690
 GameObject:
   m_ObjectHideFlags: 0
@@ -4306,13 +4233,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1261537343}
+  - component: {fileID: 1261537344}
+  - component: {fileID: 1261537345}
   m_Layer: 5
   m_Name: Gameplay Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1261537343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4320,7 +4249,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261537342}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4332,14 +4261,42 @@ RectTransform:
   - {fileID: 1012456745}
   - {fileID: 146546883}
   - {fileID: 1860853120}
-  m_Father: {fileID: 341742837}
-  m_RootOrder: 2
+  m_Father: {fileID: 151707141}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 3738, y: -0.010893}
   m_SizeDelta: {x: 2136, y: 2312.5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1261537344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261537342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8f5f8f7f0723740a3ce068dd0e1d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputField: {fileID: 398102633}
+  _errorMessage: {fileID: 281732420}
+  _errorMessageForAddScores: {fileID: 1860853118}
+--- !u!114 &1261537345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261537342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6485779276556541b6b02b6c3729b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _contentWindow: {fileID: 996041275}
 --- !u!1 &1264134788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4504,7 +4461,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1326020422
 GameObject:
@@ -5746,38 +5703,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735349636}
   m_CullTransparentMesh: 1
---- !u!1 &1799498302
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1799498303}
-  m_Layer: 0
-  m_Name: '[Managers]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1799498303
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799498302}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2028635231}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839895344
 GameObject:
   m_ObjectHideFlags: 0
@@ -6432,50 +6357,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
---- !u!1 &2028635229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2028635231}
-  - component: {fileID: 2028635230}
-  m_Layer: 0
-  m_Name: Players
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2028635230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028635229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bbd00c154a3cff4ba7c07a4d2799e98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2028635231
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028635229}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1799498303}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2051947026
 GameObject:
   m_ObjectHideFlags: 0
@@ -6560,13 +6441,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1124645041}
-        m_TargetAssemblyTypeName: UNOScoring.Controllers.MenuController, Assembly-CSharp
-        m_MethodName: ReturnToBack
+      - m_Target: {fileID: 151707142}
+        m_TargetAssemblyTypeName: Runtime.Pages.PagesController, Assembly-CSharp
+        m_MethodName: ReturnPreviousPage
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UNOScoring.Controllers.Page, Assembly-CSharp
+          m_ObjectArgument: {fileID: 974230634}
+          m_ObjectArgumentAssemblyTypeName: Runtime.Pages.Page, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
